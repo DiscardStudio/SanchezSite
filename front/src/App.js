@@ -1,48 +1,46 @@
-import React from 'react';
+import { useState } from 'react';
+import { Viewer } from '@react-pdf-viewer/core';
+import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import './App.css'
 
-/**
- * Navigation
- */
-function Nav(props)
-{
-  return (
-    <div className={"nav"}>
-      <ul>
-        <li><a className={"nava"} href={"#home"}>Home</a></li>
-        <li><a className={"nava"} href={"#resume"}>Resumé</a></li>
-        <li>|</li>
-        <li><a className={"nava"} href={"mailto:msanchezmbm@gmail.com"}>Email</a></li>
-        <li><a className={"nava"} href={"https://www.linkedin.com/in/michael-sanchez-02282001/"}>LinkedIn</a></li>
-        <li><a className={"nava"} href={"https://github.com/DiscardStudio"}>GitHub</a></li>
-      </ul>
-    </div>
-  );
-}
-
-function Info(props)
-{
+function Info(props) {
   return (
     <div>
       <div className={"parallax1"}>
         <div className={"home"} id="home">
-          <h1><code>Michael Sanchez</code></h1>
-          <p><code>Freelance Web Developer</code><code className={"blinking"}> |</code></p>
+          <h1><code>Discard Software</code></h1>
+          <p><code>Software Solutions, Consulting, and Tutoring</code><code className={"blinking"}> |</code></p>
         </div>
       </div>
     </div>
   );
 }
 
-class WebPage extends React.Component
-{
-  render() {
-    return (
+function WebPage(props) {
+  const [page, setPage] = useState(0);
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  return (
     <div>
-      <Nav/>
-      <Info/>
+      <div className={"nav"}>
+        <ul>
+          <li><button className={"nava"} onClick={() => setPage(0)}>Home</button></li>
+          <li><button className={"nava"} onClick={() => setPage(1)}>Resumé</button></li>
+          <li>|</li>
+          <li><button className={"nava"} onClick={() => {window.location.replace("mailto:msanchezmbm@gmail.com").then((response) => response.json())}}>Email</button></li>
+          <li><button className={"nava"} onClick={() => {window.location.replace("https://www.linkedin.com/in/michael-sanchez-02282001/").then((response) => response.json())}}>LinkedIn</button></li>
+          <li><button className={"nava"} onClick={() => {window.location.replace("https://github.com/DiscardStudio")}}>GitHub</button></li>
+        </ul>
+      </div>
+      {page === 0? <Info/> : 
+      <Viewer
+        fileUrl='../public/resume.pdf'
+        plugins={[
+        defaultLayoutPluginInstance
+          ]}/>}
     </div>
-  );}
+  );
 }
 
 export default WebPage;
