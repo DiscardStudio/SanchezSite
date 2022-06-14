@@ -57,6 +57,15 @@ ul {
   display: table;
 }
 
+.resume {
+  margin: 5vh 5vw;
+  display: flex;
+}
+
+.resume1 {
+  width: 50%;
+}
+
 .nav {
   position: fixed;
   background-color: #36454f;
@@ -80,11 +89,6 @@ ul {
   color: white;
   text-shadow: 3px 2px 0px black;
 }
-
-.resume {
-  text-align: center;
-}
-
 
 html {
   scroll-behavior: smooth;

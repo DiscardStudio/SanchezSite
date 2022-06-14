@@ -1,8 +1,4 @@
 import { useState } from 'react';
-import { Viewer } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
-import '@react-pdf-viewer/core/lib/styles/index.css';
-import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import './App.css'
 
 function Info(props) {
@@ -18,9 +14,39 @@ function Info(props) {
   );
 }
 
+function Resume(props) {
+  return (
+    <div className="resume">
+      <div className="resume1">
+        <h1>Projects</h1>
+        <h3>Delphi -Technologies: ReactJS, Node.js, SQL, Python Selenium</h3>
+        <p>
+          -Algorithmically determines 
+          recommendations for research 
+          articles based on interests and 
+          previously visited articles
+        </p>
+        <p>
+          -Serves a ReactJS application via NodeJS 
+        </p>
+        <p>
+          -Stores Information in 
+          PostgreSQL and adds to database 
+          using a python web scraper via
+          OLTP and OLAP
+        </p>
+        <h1>Work Experience</h1>
+        
+      </div>
+      <div className="resume1">
+
+      </div>
+    </div>
+  );
+}
+
 function WebPage(props) {
-  const [page, setPage] = useState(0);
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+  const [page, setPage] = useState(1);
   return (
     <div>
       <div className={"nav"}>
@@ -33,12 +59,7 @@ function WebPage(props) {
           <li><button className={"nava"} onClick={() => {window.location.replace("https://github.com/DiscardStudio")}}>GitHub</button></li>
         </ul>
       </div>
-      {page === 0? <Info/> : 
-      <Viewer
-        fileUrl='../public/resume.pdf'
-        plugins={[
-        defaultLayoutPluginInstance
-          ]}/>}
+      {page === 0? <Info/> : <Resume/>}
     </div>
   );
 }
