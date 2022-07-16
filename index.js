@@ -18,6 +18,8 @@ const pool = new Pool({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT
 });
+
+const path = require("path");
 /*
 with ua as (
     select users.email, users.first_name, users.last_name, auth.passhash
@@ -36,6 +38,12 @@ var httpsServer = https.createServer(credentials, app);
 httpServer.listen(8000);
 httpsServer.listen(8443);
 const port = 5000;
+
+app.use(express.static(path.resolve(__dirname, './front/build')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './front/build', 'index.html'));
+});
 
 app.post('/signup', (req, res) => {
     pool.query(`select email from auth on where email=${req.query.email}`, 
