@@ -37,7 +37,7 @@ var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(8000);
 httpsServer.listen(8443);
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
@@ -71,7 +71,7 @@ var transporter = Mailer.createTransport({
 
     auth: {
     user: "noreply@playhoboken.com", 
-    pass: "process.env.NRPASSWORD",   
+    pass: process.env.NRPASSWORD,   
     },
 });
 
