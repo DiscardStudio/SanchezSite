@@ -37,7 +37,7 @@ var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(8000);
 httpsServer.listen(8443);
-const port = 5000;
+const port = process.env.PORT;
 
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
