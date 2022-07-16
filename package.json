@@ -10,7 +10,10 @@
   "author": "Michael Sanchez",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "nvm": "^0.0.4"
+    "nodemailer": "^6.7.7",
+    "nvm": "^0.0.4",
+    "pg": "^8.7.3"
   }
 }
