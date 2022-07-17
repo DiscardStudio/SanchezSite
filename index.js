@@ -13,9 +13,10 @@ require('dotenv').config();
 const { Pool } = require('pg')
 // pools will use environment variables
 // for connection information
-const { host, port, user, password, database } = new DsnParser(process.env.DATABASE_URL).getParts();
+const port = process.env.PORT || 5000;
+const { host, port2, user, password, database } = new DsnParser(process.env.DATABASE_URL).getParts();
 
-const pool = new Pool({ host, port, user, password, database });
+const pool = new Pool({ host, port2, user, password, database });
 
 const path = require("path");
 /*
