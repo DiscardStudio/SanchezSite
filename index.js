@@ -67,6 +67,8 @@ const port = process.env.PORT || 5000;
 
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
+app.use(cors());
+
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './front/build', 'index.html'));
 });
