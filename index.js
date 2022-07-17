@@ -2,6 +2,7 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var cors = require('cors');
+var DsnParser = require('dsn-parser');
 var privateKey  = process.env.privateKey;
 var certificate = process.env.certificate;
 
@@ -12,13 +13,9 @@ require('dotenv').config();
 const { Pool } = require('pg')
 // pools will use environment variables
 // for connection information
-const pool = new Pool({
-    host: process.env.PGHOST,
-    user: process.env.PGUSER,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT
-});
+const { host, port, user, password, database } = new DsnParser(process.env.DATABASE_URL).getParts();
+
+const pool = new Pool({ host, port, user, password, database });
 
 const path = require("path");
 /*
@@ -63,7 +60,6 @@ var httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(8000);
 httpsServer.listen(8443);
-const port = process.env.PORT || 5000;
 
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
@@ -148,7 +144,7 @@ app.get('/find-session', (req, res) => {
             return console.error('Error finding sessions');
         }
         if (result.rows.length > 0) {
-            res.json({rows:result.rows,status:200});
+            res.json({rows:result.rows});
             return console.write("Sent Sessions");
         }
         res.json({status:404});
@@ -166,20 +162,7 @@ app.get('/login', (req,res) => {
             res.json({status:404});
             return console.error('Error executing query', err.stack);
         }
-        res.json({rows:result.rows[0],status:200});
-    });
-});
-
-app.get('/user', (req,res) => {
-    pool.query(`select email, first_name, last_name
-    from users
-    where email=${req.query.email}`, 
-        (err, result) => {
-        if (err) {
-            res.json({status:404});
-            return console.error('Error executing query', err.stack);
-        }
-        res.json(result.rows[0]);
+        res.json({email:result.rows[0].email,first_name:result.rows[0].first_name,last_name:result.rows[0].last_name});
     });
 });
 
