@@ -77,16 +77,16 @@ app.post('/signup', (req, res) => {
     pool.query(`select email from auth on where email=${req.query.email}`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
-            res.sendStatus(500);
+            res.json({status:500});
             return console.error('User already exists');
         }
         pool.query(`insert into auth(email,passhash) values(${req.query.email},${req.query.passhash}); insert into users(email, first_name, last_name) values (${req.query.email},${req.query.first_name},${req.query.last_name})`, 
             (err, result) => {
             if (err) {
-                res.sendStatus(403);
+                res.json({status:403});
                 return console.error('Error executing query', err.stack);
             }
-            res.sendStatus(200);
+            res.json({status:200});
         });
     });
 });
@@ -107,7 +107,7 @@ app.post('/create-session', (req, res) => {
     pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values (${req.query.email},${req.query.first_name},${req.query.last_name},${new Date(date.getTime() + (-300)*60*1000)},${req.query.game})`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
-            res.sendStatus(403);
+            res.json({status:403});
             return console.error('Session already exists');
         }
         pool.query(`
@@ -116,7 +116,7 @@ app.post('/create-session', (req, res) => {
             where users.email=interests.email and `, 
             (err, result2) => {
             if (err) {
-                res.sendStatus(403);
+                res.json({status:403});
                 return console.error('Error');
             }
         });
@@ -136,6 +136,7 @@ app.post('/create-session', (req, res) => {
             }
         });
     }
+    res.json({status:200});
 });
 
 app.get('/find-session', (req, res) => {
@@ -143,14 +144,14 @@ app.get('/find-session', (req, res) => {
                 from sessions`, 
         (err, result) => {
         if (err) {
-            res.sendStatus(403);
+            res.json({status:403});
             return console.error('Error finding sessions');
         }
         if (result.rows.length > 0) {
-            res.json({rows:result.rows});
+            res.json({rows:result.rows,status:200});
             return console.write("Sent Sessions");
         }
-        res.sendStatus(404);
+        res.json({status:404});
         return console.write("No Sessions Found");
         
     });
@@ -162,10 +163,10 @@ app.get('/login', (req,res) => {
     where users.email=${req.query.email} and auth.passhash=${req.query.passhash}`, 
         (err, result) => {
         if (err) {
-            res.sendStatus(404);
+            res.json({status:404});
             return console.error('Error executing query', err.stack);
         }
-        res.json(result.rows[0]);
+        res.json({rows:result.rows[0],status:200});
     });
 });
 
@@ -175,7 +176,7 @@ app.get('/user', (req,res) => {
     where email=${req.query.email}`, 
         (err, result) => {
         if (err) {
-            res.sendStatus(404);
+            res.json({status:404});
             return console.error('Error executing query', err.stack);
         }
         res.json(result.rows[0]);
