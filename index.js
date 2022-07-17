@@ -75,13 +75,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    pool.query(`select email from auth on where email=${req.query.email}`, 
+    pool.query(`select email from auth on where email="${req.query.email}`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:500});
             return console.error('User already exists');
         }
-        pool.query(`insert into auth(email,passhash) values(${req.query.email},${req.query.passhash}); insert into users(email, first_name, last_name) values (${req.query.email},${req.query.first_name},${req.query.last_name})`, 
+        pool.query(`insert into auth(email,passhash) values("${req.query.email}","${req.query.passhash}"); insert into users(email, first_name, last_name) values ("${req.query.email}","${req.query.first_name}","${req.query.last_name}")`, 
             (err, result) => {
             if (err) {
                 res.json({status:403});
@@ -105,7 +105,7 @@ var transporter = Mailer.createTransport({
 });
 
 app.post('/create-session', (req, res) => {
-    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values (${req.query.email},${req.query.first_name},${req.query.last_name},${new Date(date.getTime() + (-300)*60*1000)},${req.query.game})`, 
+    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values ("${req.query.email}","${req.query.first_name}","${req.query.last_name}",${new Date(date.getTime() + (-300)*60*1000)},"${req.query.game}")`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:403});
@@ -161,7 +161,7 @@ app.get('/find-session', (req, res) => {
 app.get('/login', (req,res) => {
     pool.query(`select users.email, users.first_name, users.last_name, auth.passhash
     from users inner join auth on (users.email=auth.email)
-    where users.email=${req.query.email} and auth.passhash=${req.query.passhash}`, 
+    where users.email="${req.query.email}" and auth.passhash="${req.query.passhash}"`, 
         (err, result) => {
         if (err) {
             res.json({status:404});
