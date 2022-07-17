@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var cors = require('cors');
-var DsnParser = require('dsn-parser');
+const path = require("path");
 var privateKey  = process.env.privateKey;
 var certificate = process.env.certificate;
 
@@ -10,15 +10,19 @@ var credentials = {key: privateKey, cert: certificate};
 var express = require('express');
 var app = express();
 require('dotenv').config();
-const { Pool } = require('pg')
 // pools will use environment variables
 // for connection information
 const port = process.env.PORT || 5000;
-const { host, port2, user, password, database } = new DsnParser(process.env.DATABASE_URL).getParts();
+const { Client } = require('pg');
 
-const pool = new Pool({ host, port2, user, password, database });
+const pool = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
-const path = require("path");
+pool.connect()
 /*
     create table users (
     email varchar(32) primary key,
