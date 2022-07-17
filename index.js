@@ -21,6 +21,31 @@ const pool = new Pool({
 
 const path = require("path");
 /*
+    create table users (
+    email varchar(32) primary key,
+    first_name varchar(32) not null,
+    last_name varchar(32) not null,
+    profile_picture bytea
+    );
+    
+    create table auth (
+    email varchar(32) primary key,
+    passhash varchar(32) not null
+    );
+    
+    create table sessions (
+    email varchar(32) primary key,
+    first_name varchar(32) not null,
+    last_name varchar(32) not null,
+    timeslot time not null,
+    game varchar(4) not null
+    );
+    
+    create table interests (
+    email varchar(32) primary key,
+    games text[] not null
+    );
+
 with ua as (
     select users.email, users.first_name, users.last_name, auth.passhash
     from users inner join auth on (users.email=auth.email)
