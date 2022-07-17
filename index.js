@@ -1,6 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
+var cors = require('cors');
 var privateKey  = process.env.privateKey;
 var certificate = process.env.certificate;
 
