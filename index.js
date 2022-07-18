@@ -71,6 +71,7 @@ httpsServer.listen(8443);
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
 app.use(cors());
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './front/build', 'index.html'));
