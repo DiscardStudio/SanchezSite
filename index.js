@@ -77,8 +77,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    console.log(req,req.query);
-    pool.query(`select email from auth where email="${req.query.email}"`, 
+    console.log(req.body);
+    pool.query(`select email from auth where email="${req.body.email}"`, 
         (err, result) => {
         if(err) {
             res.json({status:404});
@@ -88,7 +88,7 @@ app.post('/signup', (req, res) => {
             res.json({status:500});
             return console.error('User already exists');
         }
-        pool.query(`insert into auth(email,passhash) values("${req.query.email}","${req.query.passhash}"); insert into users(email, first_name, last_name) values ("${req.query.email}","${req.query.first_name}","${req.query.last_name}")`, 
+        pool.query(`insert into auth(email,passhash) values("${req.body.email}","${req.body.passhash}"); insert into users(email, first_name, last_name) values ("${req.body.email}","${req.body.first_name}","${req.body.last_name}")`, 
             (err, result) => {
             if (err) {
                 res.json({status:403});
@@ -110,7 +110,7 @@ var transporter = Mailer.createTransport({
 });
 
 app.post('/create-session', (req, res) => {
-    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values ("${req.query.email}","${req.query.first_name}","${req.query.last_name}",${new Date(date.getTime() + (-300)*60*1000)},"${req.query.game}")`, 
+    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values ("${req.body.email}","${req.body.first_name}","${req.body.last_name}",${new Date(date.getTime() + (-300)*60*1000)},"${req.body.game}")`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:403});
@@ -131,8 +131,8 @@ app.post('/create-session', (req, res) => {
         var mailOptions = {
             from: 'noreply@playhoboken.com',
             to: result.rows[x].email,
-            subject: `${req.query.first_name} is playing one of your favorite games!`,
-            text: `Dear ${result2.rows[x].first_name},\n Come by today right now to play your favorite game with ${req.query.first_name}!\n\n Note: This is an automated message, please direct any questions you have to https://playhoboken.com`
+            subject: `${req.body.first_name} is playing one of your favorite games!`,
+            text: `Dear ${result2.rows[x].first_name},\n Come by today right now to play your favorite game with ${req.body.first_name}!\n\n Note: This is an automated message, please direct any questions you have to https://playhoboken.com`
         };
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
