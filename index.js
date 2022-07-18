@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var cors = require('cors');
-const path = require("path");
+const path = require('path');
 var Mailer = require('nodemailer');
 
 var privateKey  = process.env.privateKey;
@@ -79,17 +79,17 @@ app.get('/', (req, res) => {
 
 app.post('/signup', (req, res) => {
     console.log(req.body);
-    pool.query(`select email from auth where email="${req.body.email}"`, 
+    pool.query(`select email from auth where email='${req.body.email}'`, 
         (err, result) => {
         if(err) {
             res.json({status:404});
-            return console.error("Error executing query\n", err.stack);
+            return console.error('Error executing query\n', err.stack);
         }
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:500});
             return console.error('User already exists');
         }
-        pool.query(`insert into auth(email,passhash) values("${req.body.email}","${req.body.passhash}"); insert into users(email, first_name, last_name) values ("${req.body.email}","${req.body.first_name}","${req.body.last_name}")`, 
+        pool.query(`insert into auth(email,passhash) values('${req.body.email}','${req.body.passhash}'); insert into users(email, first_name, last_name) values ('${req.body.email}','${req.body.first_name}','${req.body.last_name}')`, 
             (err, result) => {
             if (err) {
                 res.json({status:403});
@@ -100,18 +100,18 @@ app.post('/signup', (req, res) => {
     });
 });
 var transporter = Mailer.createTransport({
-    service: "smtp",
-    host: "playhoboken.com",
+    service: 'smtp',
+    host: 'playhoboken.com',
     port: 465,
 
     auth: {
-    user: "noreply@playhoboken.com", 
+    user: 'noreply@playhoboken.com', 
     pass: process.env.NRPASSWORD,   
     },
 });
 
 app.post('/create-session', (req, res) => {
-    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values ("${req.body.email}","${req.body.first_name}","${req.body.last_name}",${new Date(date.getTime() + (-300)*60*1000)},"${req.body.game}")`, 
+    pool.query(`insert into sessions(email, first_name, last_name, timeslot, game) values ('${req.body.email}','${req.body.first_name}','${req.body.last_name}',${new Date(date.getTime() + (-300)*60*1000)},'${req.body.game}')`, 
         (err, result) => {
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:403});
@@ -156,10 +156,10 @@ app.get('/find-session', (req, res) => {
         }
         if (result.rows.length > 0) {
             res.json({rows:result.rows});
-            return console.write("Sent Sessions");
+            return console.write('Sent Sessions');
         }
         res.json({status:404});
-        return console.write("No Sessions Found");
+        return console.write('No Sessions Found');
         
     });
 });
@@ -168,7 +168,7 @@ app.get('/login', (req,res) => {
     
     pool.query(`select users.email, users.first_name, users.last_name, auth.passhash
     from users inner join auth on (users.email=auth.email)
-    where users.email="${req.query.email}" and auth.passhash="${req.query.passhash}"`, 
+    where users.email='${req.query.email}' and auth.passhash='${req.query.passhash}'`, 
         (err, result) => {
         if (err) {
             res.json({status:404});
