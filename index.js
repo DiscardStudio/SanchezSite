@@ -77,7 +77,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-    pool.query(`select email from auth where email='${req.query.email}'`, 
+    pool.query(`select email from auth where email="${req.query.email}"`, 
         (err, result) => {
         if(err) {
             res.json({status:404});
