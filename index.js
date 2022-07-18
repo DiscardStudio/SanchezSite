@@ -3,6 +3,8 @@ var http = require('http');
 var https = require('https');
 var cors = require('cors');
 const path = require("path");
+var Mailer = require('nodemailer');
+
 var privateKey  = process.env.privateKey;
 var certificate = process.env.certificate;
 
@@ -22,7 +24,7 @@ const pool = new Client({
   }
 });
 
-pool.connect()
+pool.connect();
 /*
     create table users (
     email varchar(32) primary key,
@@ -74,9 +76,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './front/build', 'index.html'));
 });
 
-app.post('/signup', (req, res) => {
-    pool.query(`select email from auth on where email="${req.query.email}"`, 
+app.get('/signup', (req, res) => {
+    pool.query(`select email from auth where email='${req.query.email}'`, 
         (err, result) => {
+        if(err) {
+            res.json({status:404});
+            return console.error("Error executing query\n", err.stack);
+        }
         if (result && result.rows && result.rows.length > 0) {
             res.json({status:500});
             return console.error('User already exists');
@@ -91,8 +97,6 @@ app.post('/signup', (req, res) => {
         });
     });
 });
-var Mailer = require('nodemailer');
-
 var transporter = Mailer.createTransport({
     service: "smtp",
     host: "playhoboken.com",
@@ -159,6 +163,7 @@ app.get('/find-session', (req, res) => {
 });
 
 app.get('/login', (req,res) => {
+    
     pool.query(`select users.email, users.first_name, users.last_name, auth.passhash
     from users inner join auth on (users.email=auth.email)
     where users.email="${req.query.email}" and auth.passhash="${req.query.passhash}"`, 
