@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './front/build', 'index.html'));
 });
 
-app.get('/signup', (req, res) => {
+app.post('/signup', (req, res) => {
     pool.query(`select email from auth where email='${req.query.email}'`, 
         (err, result) => {
         if(err) {
