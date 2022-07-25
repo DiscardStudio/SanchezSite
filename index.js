@@ -70,7 +70,9 @@ httpsServer.listen(8443);
 
 app.use(express.static(path.resolve(__dirname, './front/build')));
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
