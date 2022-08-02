@@ -1,9 +1,76 @@
+ul, li {
+  display: inline;
+  padding: 10px;
+  margin-right:10px;
+}
+
+ul {
+  position: relative;
+  margin: 0px auto;
+  display: table;
+}
+
+.nav {
+  position: fixed;
+  background-color: #36454f;
+  height: 40px;
+  top:0px;
+  width: 100%;
+  box-shadow: 0px 5px 10px;
+  border-bottom-width: 1px;
+  border-bottom-color: #293542;
+  border-bottom-style: solid;
+}
+
 button.nava:link, button.nava:visited, button.nava {
   font-family: "'Impact', Charcoal, sans-serif";
   color: rgb(194, 194, 194);;
   text-decoration: none;
   background: none!important;
   border: none;
+}
+
+.home{
+  margin: 0;
+  padding: 10em 0px;
+  text-align: center;
+  background: none;
+  font-family: "Avantgarde";
+  font-weight: bolder;
+  font-size: 30px;
+  color: white;
+  text-shadow: 3px 2px 0px black;
+  height: 100vw 100vh;
+}
+
+@media (min-width: 600px){
+  .react-pdf__Page__canvas {
+    margin: 0 auto;
+    width: 40% !important;
+    height: 50% !important;
+  }
+
+  .resume1 {
+    position: absolute;
+    align-self: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px){
+  .react-pdf__Page__canvas {
+    margin: 0 auto;
+    top: 10em;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+  }
+
+  .resume1 {
+    position: absolute;
+    align-self: center;
+    width: 100%;
+  }
 }
 
 button.nava:hover {
@@ -44,53 +111,6 @@ a:hover {
 
 a:active {
   color: grey;
-}
-
-ul, li {
-  display: inline;
-  padding: 10px;
-  margin-right:10px;
-}
-ul {
-  position: relative;
-  margin: 0px auto;
-  display: table;
-}
-.react-pdf__Page__canvas {
-  margin: 0 auto;
-  width: 40% !important;
-  height: 50% !important;
-}
-
-.resume1 {
-  position: absolute;
-  align-self: center;
-  width: 100%;
-}
-
-.nav {
-  position: fixed;
-  background-color: #36454f;
-  height: 40px;
-  top:0px;
-  width: 100%;
-  box-shadow: 0px 5px 10px;
-  border-bottom-width: 1px;
-  border-bottom-color: #293542;
-  border-bottom-style: solid;
-}
-
-.home{
-  margin: 0;
-  padding: 10em 0px;
-  text-align: center;
-  background: none;
-  font-family: "Avantgarde";
-  font-weight: bolder;
-  font-size: 30px;
-  color: white;
-  text-shadow: 3px 2px 0px black;
-  height: 100vw 100vh;
 }
 
 html {
