@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import './App.css'
+import { Document, Page, pdfjs } from "react-pdf";
+import './App.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function Info(props) {
   return (
@@ -18,48 +21,29 @@ function Resume(props) {
   return (
     <div className="resume">
       <div className="resume1">
-        <h1>Projects</h1>
-        <h3>Delphi -Technologies: ReactJS, Node.js, SQL, Python Selenium</h3>
-        <p>
-          -Algorithmically determines 
-          recommendations for research 
-          articles based on interests and 
-          previously visited articles
-        </p>
-        <p>
-          -Serves a ReactJS application via NodeJS 
-        </p>
-        <p>
-          -Stores Information in 
-          PostgreSQL and adds to database 
-          using a python web scraper via
-          OLTP and OLAP
-        </p>
-        <h1>Work Experience</h1>
-        
-      </div>
-      <div className="resume1">
-
+        <Document file="Resume.pdf">
+          <Page pageNumber={1} onLoadError={console.error}/>
+        </Document>
       </div>
     </div>
   );
 }
 
 function WebPage(props) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   return (
     <div>
+      <Info/>
+      {page === 0? <div/> : <Resume/>}
       <div className={"nav"}>
         <ul>
-          <li><button className={"nava"} onClick={() => setPage(0)}>Home</button></li>
-          <li><button className={"nava"} onClick={() => setPage(1)}>Resumé</button></li>
+          <li><button className={"nava"} onClick={() => setPage(page===0?1:0)}>{page===0?"Show ":"Hide "}Resumé</button></li>
           <li>|</li>
           <li><button className={"nava"} onClick={() => {window.location.replace("mailto:msanchezmbm@gmail.com").then((response) => response.json())}}>Email</button></li>
           <li><button className={"nava"} onClick={() => {window.location.replace("https://www.linkedin.com/in/michael-sanchez-02282001/").then((response) => response.json())}}>LinkedIn</button></li>
           <li><button className={"nava"} onClick={() => {window.location.replace("https://github.com/DiscardStudio")}}>GitHub</button></li>
         </ul>
       </div>
-      {page === 0? <Info/> : <Resume/>}
     </div>
   );
 }
