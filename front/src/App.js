@@ -38,8 +38,8 @@ function WebPage(props) {
       <div className={"nav"}>
         <ul>
           <li><button className={"nava"} onClick={() => setPage(page===0?1:0)}>{page===0?"Show ":"Hide "}Resumé</button></li>
-          <li><button className={"nava"} onClick={() => {window.location.replace("https://www.linkedin.com/in/michael-sanchez-02282001/").then((response) => response.json())}}>LinkedIn</button></li>
-          <li><button className={"nava"} onClick={() => {window.location.replace("https://github.com/DiscardStudio")}}>GitHub</button></li>
+          <li><button className={"nava"} onClick={() => {window.open("https://www.linkedin.com/in/michael-sanchez-02282001/",'_blank').then((response) => response.json())}}>LinkedIn</button></li>
+          <li><button className={"nava"} onClick={() => {window.open("https://github.com/DiscardStudio",'_blank')}}>GitHub</button></li>
         </ul>
       </div>
     </div>
