@@ -21,15 +21,6 @@ ul {
   border-bottom-style: solid;
 }
 
-button.nava:link, button.nava:visited, button.nava {
-  font-family: "'Impact', Charcoal, sans-serif";
-  font-size: 2em;
-  color: rgb(194, 194, 194);
-  text-decoration: none;
-  background: none!important;
-  border: none;
-}
-
 .home{
   margin: 0;
   padding: 10em 0px;
@@ -43,7 +34,7 @@ button.nava:link, button.nava:visited, button.nava {
   height: 100vw 100vh;
 }
 
-@media (min-width: 600px){
+@media (min-width: 1200px){
   .react-pdf__Page__canvas {
     margin: 0 auto;
     top: 8vh;
@@ -57,9 +48,18 @@ button.nava:link, button.nava:visited, button.nava {
     align-self: center;
     width: 100%;
   }
+
+  button.nava:link, button.nava:visited, button.nava {
+    font-family: "'Impact', Charcoal, sans-serif";
+    font-size: 2em;
+    color: rgb(194, 194, 194);
+    text-decoration: none;
+    background: none!important;
+    border: none;
+  }
 }
 
-@media (max-width: 600px){
+@media (max-width: 1200px){
   .react-pdf__Page__canvas {
     margin: 0 auto;
     top: 8vh;
@@ -72,6 +72,15 @@ button.nava:link, button.nava:visited, button.nava {
     position: absolute;
     align-self: center;
     width: 100%;
+  }
+
+  button.nava:link, button.nava:visited, button.nava {
+    font-family: "'Impact', Charcoal, sans-serif";
+    font-size: 1em;
+    color: rgb(194, 194, 194);
+    text-decoration: none;
+    background: none!important;
+    border: none;
   }
 }
 
