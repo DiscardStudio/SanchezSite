@@ -41,6 +41,12 @@ ul {
     align-self: center;
     width: 100%;
   }
+  img {
+    width: 500px;
+    height: 600px;
+    display: table;
+    margin: 0 auto;
+  }
 
   button.nava:link, button.nava:visited, button.nava {
     font-family: "'Impact', Charcoal, sans-serif";
@@ -63,11 +69,6 @@ ul {
     border-bottom-style: solid;
   }
   
-  img {
-    height: 90vh;
-    display: table;
-    margin: 0 auto;
-  }
 }
 
 @media (max-width: 1200px){
@@ -102,13 +103,6 @@ ul {
     border-bottom-width: 1px;
     border-bottom-color: #293542;
     border-bottom-style: solid;
-  }
-
-  img {
-    width: 100vw;
-    height: 90vh;
-    display: table;
-    margin: 0 auto;
   }
 }
 
