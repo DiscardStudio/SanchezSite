@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import { Document, Page, pdfjs } from "react-pdf";
 import './App.css';
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function Info(props) {
   return (
@@ -21,9 +18,12 @@ function Resume(props) {
   return (
     <div className="resume">
       <div className="resume1">
-        <Document file="Resume.pdf">
-          <Page pageNumber={1} onLoadError={console.error}/>
-        </Document>
+        { /* eslint-disable-next-line*/}
+        <img src="Resume.png" style = {{
+          height: "90vh",
+          display: "table",
+          margin: "0 auto"
+        }}/>
       </div>
     </div>
   );
