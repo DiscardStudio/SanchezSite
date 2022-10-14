@@ -62,6 +62,12 @@ ul {
     border-bottom-color: #293542;
     border-bottom-style: solid;
   }
+  
+  img {
+    height: 90vh;
+    display: table;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 1200px){
@@ -96,6 +102,13 @@ ul {
     border-bottom-width: 1px;
     border-bottom-color: #293542;
     border-bottom-style: solid;
+  }
+
+  img {
+    width: 100vw;
+    height: 90vh;
+    display: table;
+    margin: 0 auto;
   }
 }
 

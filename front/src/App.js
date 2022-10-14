@@ -19,11 +19,7 @@ function Resume(props) {
     <div className="resume">
       <div className="resume1">
         { /* eslint-disable-next-line*/}
-        <img src="Resume.png" style = {{
-          height: "90vh",
-          display: "table",
-          margin: "0 auto"
-        }}/>
+        <img src="Resume.png"/>
       </div>
     </div>
   );
