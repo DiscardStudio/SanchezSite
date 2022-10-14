@@ -28,13 +28,6 @@ ul {
 }
 
 @media (min-width: 1200px){
-  .react-pdf__Page__canvas {
-    margin: 0 auto;
-    top: 8vh;
-    width: 40vw !important;
-    height: 75vh !important;
-  }
-
   .resume1 {
     top: 8vh;
     position: absolute;
@@ -72,13 +65,41 @@ ul {
 }
 
 @media (max-width: 1200px){
-  .react-pdf__Page__canvas {
-    margin: 0 auto;
-    top: 8vh;
-    width: 100vw !important;
-    height: 75vh !important;
+  .resume1 {
+    position: absolute;
+    align-self: center;
+    width: 100%;
   }
 
+  img {
+    width: 500px;
+    height: 600px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  button.nava:link, button.nava:visited, button.nava {
+    font-family: "'Impact', Charcoal, sans-serif";
+    font-size: .5em;
+    color: rgb(194, 194, 194);
+    text-decoration: none;
+    background: none!important;
+    border: none;
+  }
+
+  .nav {
+    position: relative;
+    background-color: #36454f;
+    top:0px;
+    width: 100%;
+    box-shadow: 0px 5px 10px;
+    border-bottom-width: 1px;
+    border-bottom-color: #293542;
+    border-bottom-style: solid;
+  }
+}
+
+@media (max-width: 600px){
   .resume1 {
     position: absolute;
     align-self: center;
@@ -92,6 +113,13 @@ ul {
     text-decoration: none;
     background: none!important;
     border: none;
+  }
+
+  img {
+    width: 300px;
+    height: 400px;
+    display: table;
+    margin: 0 auto;
   }
 
   .nav {
