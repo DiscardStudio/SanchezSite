@@ -45,7 +45,7 @@ client.once('ready', () => {
 	console.log('Bot is Ready!');
 });
 
-client.on('messageRawReactionAdd', async (reaction, user) => {
+client.on('messageReactionAdd', async (reaction, user) => {
     // When a reaction is received, check if the structure is partial
     const x = [
         ["🌵", 0],
