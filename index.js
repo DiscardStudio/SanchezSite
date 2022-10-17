@@ -45,7 +45,7 @@ client.once('ready', () => {
 	console.log('Bot is Ready!');
 });
 
-client.on('messageReactionAdd', async (reaction, user) => {
+client.on('messageRawReactionAdd', async (reaction, user) => {
     // When a reaction is received, check if the structure is partial
     const x = [
         ["🌵", 0],
@@ -64,7 +64,13 @@ client.on('messageReactionAdd', async (reaction, user) => {
     }
   }
   try {
-    user.roles.add(reaction.message.guild.roles.cache.find(role => role.name === ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))));
+    let mesg = await client.channels.fetch(992805236508999760).messages.fetch(996493367145943151);
+    if(reaction.message === mesg)
+      user.roles.add(
+        reaction.message.guild.roles.cache.find(
+          role => role.name === ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
+        )
+      );
   } catch (error) {
     console.error("Something went wrong with addRole:",error);
     return;
