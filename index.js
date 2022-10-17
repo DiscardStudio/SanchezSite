@@ -64,7 +64,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     }
   }
   try {
-  user.roles.addRole(
+  user.roles.add(
     client.channels.get(992805236508999760).guild.roles.find(
       role => role.name ===  ("STEP " + (x.filter(e => e[0] === reaction.emoji.name)[1] + 19))
       )
