@@ -64,8 +64,7 @@ client.on('messageRawReactionAdd', async (reaction, user) => {
     }
   }
   try {
-    let mesg = await client.channels.fetch(992805236508999760).messages.fetch(996493367145943151);
-    if(reaction.message === mesg)
+    if(reaction.message.id === 996493367145943151)
       user.roles.add(
         reaction.message.guild.roles.cache.find(
           role => role.name === ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
