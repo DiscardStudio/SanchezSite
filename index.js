@@ -63,11 +63,16 @@ client.on('messageReactionAdd', async (reaction, user) => {
 			return;
     }
   }
+  try {
   user.roles.addRole(
     client.channels.get(992805236508999760).guild.roles.find(
       role => role.name ===  ("STEP " + (x.filter(e => e[0] === reaction.emoji.name)[1] + 19))
       )
     );
+  } catch (error) {
+    console.error("Something went wrong with addRole:",error);
+    return;
+  }
 });
 
 client.login(process.env.TOKEN);
