@@ -65,8 +65,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
   try {
     let server = client.guilds.cache.get('951194891076112444');
-    let personMember = await server.members.cache.find(user);
-      personMember.roles.add(
+    //let personMember = await server.members.cache.find(user);
+      user.roles.add(
         ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
       );
   } catch (error) {
