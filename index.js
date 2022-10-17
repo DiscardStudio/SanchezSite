@@ -64,7 +64,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     }
   }
   try {
-    let r = await client.guilds.fetch(992805236508999760).then(guild => guild.roles.get(
+    let r = await client.guilds.fetch(992805236508999760).then(guild => guild.roles.filter(gRole => gRole ===
       ("STEP " + (x.filter(e => e[0] === reaction.emoji.name)[1] + 19))
     ));
     user.roles.add(r);
