@@ -65,11 +65,9 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
   try {
     let server = client.guilds.cache.get('951194891076112444');
-    let personMember = server.members.cache.get(user);
+    let personMember = await server.members.cache.get(user);
       personMember.roles.add(
-        server.roles.find(
-          role => role.name === ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
-        )
+        ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
       );
   } catch (error) {
     console.error("Something went wrong with addRole:",error);
