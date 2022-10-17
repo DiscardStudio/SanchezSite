@@ -64,7 +64,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
     }
   }
   try {
-    if(reaction.message.id === 996493367145943151)
       user.roles.add(
         reaction.message.guild.roles.cache.find(
           role => role.name === ("STEP "+(x.filter(y=>y[0] === reaction.emoji.name)[1]+19))
