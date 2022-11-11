@@ -34,6 +34,14 @@ app.listen(port, () => {
 });
 
 
+
+
+
+
+/*
+
+
+
 const { Client, GatewayIntentBits, Partials } = require('discord.js');
 
 const client = new Client({
@@ -75,4 +83,4 @@ client.on('messageReactionAdd', async (reaction, user) => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN);*/
