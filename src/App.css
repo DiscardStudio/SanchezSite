@@ -1,15 +1,18 @@
-ul, li {
+ul.nav, li.nav {
   position: relative;
   display:none;
   padding: 1vh 0;
   margin-right:3vw;
 }
+* {
+  padding: 0;
+}
 
-ul, li .auth {
+ul.nav, li.nav {
   display: block;
 }
 
-.nav:hover ul, li {
+div.nav:hover ul.nav, li.nav {
   display: block;
   animation: appear 2s;
 }
@@ -23,9 +26,10 @@ ul {
   position: relative;
   margin: 15vh 1vw;
 }
-.nav {
+div.nav {
   position: absolute;
   background-color: #202020;
+  margin:0;
   top:0px;
   left:-15.5vw;
   height: 100%;
@@ -38,14 +42,13 @@ ul {
   transition: all .5s ease-out;
 }
 
-.nav:hover {
+div.nav:hover {
   transform: translate(15vw, 0);
 }
 
 
 button.nava:link, button.nava:visited, button.nava {
   position: relative;
-  font: 'Aphrodite';
   font-size: 2em;
   color: rgb(255, 255, 255);
   text-decoration: none;
@@ -96,8 +99,8 @@ a:active {
 html {
   scroll-behavior: smooth;
   height: 100%;
-  width:100%; 
   overflow: hidden;
+  width:100%; 
 }
 
 .blinking{
@@ -118,12 +121,26 @@ code {
   color: rgb(212, 212, 212);
 }
 
+h1, h2, h3, button{
+  margin: 0;
+  font-family: "Courrier New", monospace;
+  color: #202020;
+}
+
+h1 {
+  font-size:3em;
+}
+
 .components {
   position: absolute;
-  left: 20vw;
-  top: 0;
-  margin: 5vh 15vw;
+  padding-bottom: auto;
+  left: 22vw;
+  margin: 0;
+  top: 20vh;
   width: 80vw;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 1;
 }
 
@@ -136,7 +153,7 @@ code {
   opacity: .5;
   content: url("../public/backward-arrow.svg");
   transition: all .5s ease-out;
-  animation: blinkOut 2s;
+  animation: blinkOut 2s infinite;
 }
 
 @keyframes blinkIn{
@@ -147,10 +164,13 @@ code {
 
 @keyframes blinkOut{
   0%{opacity:0;}
-  100%{opacity: .5;}
+  25%{opacity: .25;}
+  50%{opacity: .5;}
+  75%{opacity: .25;}
+  100%{opacity: 0;}
 }
 
-.nav:hover .logo {
+div.nav:hover .logo {
   content: url("../public/forward-arrow.svg");
   opacity: 1;
   animation: blinkIn 2s;
@@ -161,4 +181,89 @@ code {
   left: 1vw;
   width: 15vw;
   margin: 2vh auto;
+}
+
+.experience {
+  position:relative;
+  padding: auto;
+}
+
+.range, .exp {
+  margin: 2vh auto;
+  display: inline-block;
+}
+
+.exp {
+  position: absolute;
+  left: 0;
+}
+
+.range {
+  position: absolute;
+  right: 0vw;
+}
+
+.range[id="school"] {
+  right: 20vw;
+}
+
+.points, .point {
+  margin: 0;
+  margin-top: 2vh;
+}
+
+.points[id="school"] {
+  width: 60vw;
+  overflow-x: clip;
+}
+
+.point[id="school"] {
+  margin: 1vh 0;
+}
+
+ul, li {
+  position: relative;
+  padding: 1vh 0;
+
+  margin-right:3vw;
+}
+
+.exper {
+  position: relative;
+  height: 63vh;
+  width: 60vw;
+  left: 5px;
+  overflow-y: scroll;
+  overflow-x: clip;
+  box-shadow: 0px 0px 5px 2px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.exper::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+hr {
+  margin: 1vh 0;
+  width: 60vw;
+}
+
+.title {
+  position: relative;
+  top: 5vh;
+  margin: 2vh 0;
+}
+
+.skillimg {
+  width: 5vw;
+  margin: 5vh 5vw;
+  display: inline-block;
+  -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
+  filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
+}
+
+.skillimg:hover {
+  -webkit-filter:grayscale(25%);
+  filter: grayscale(25%);
+  cursor: grab;
 }

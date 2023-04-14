@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, React } from 'react';
 import './App.css';
 import { Display } from './components/componentPicker';
 import { About, Experience, Education, Skills } from './components/components';
@@ -8,11 +8,12 @@ function Nav(props) {
     <div>
       <div className="nav">
         <img alt="Michael Sanchez" src="SanchezPictures/Contemporary.png" className="me"/>
-        <ul>
+        <ul className="nav">
           {
             props.nav.map(x=>{
-              return (<li key={x.page}>
-                <button className={"nava"} onClick={() => props.setPage(x.page)}>{x.title}</button>
+              return (
+              <li className="nav" key={x.page}>
+                <button style={x.page===props.page? {opacity: 1}:{opacity: 0.5}} className={"nava"} onClick={() => props.setPage(x.page)}>{x.title}</button>
               </li>)
             })
           }
@@ -25,12 +26,16 @@ function Nav(props) {
 }
 
 function WebPage(props) {
-  const [page, setPage] = useState(-1);
+  const [page, setPage] = useState(0);
   const nav = [
-    { page: 0, title: "About", component: <About/> },
-    { page: 1, title: "Experience", component: <Experience/> },
-    { page: 2, title: "Education", component: <Education/> },
-    { page: 3, title: "Skills", component: <Skills/> }
+    { page: 0, title: "Experience", component: <Experience/> },
+    { page: 1, title: "Education", component: <Education/> },
+    { page: 2, title: "About/Skills", component:
+      <>
+        <About/>
+        <br/>
+        <Skills/>
+      </>},
   ];
   useEffect(() => {
 
