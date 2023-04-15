@@ -28,14 +28,14 @@ function Nav(props) {
 function WebPage(props) {
   const [page, setPage] = useState(0);
   const nav = [
-    { page: 0, title: "Experience", component: <Experience/> },
-    { page: 1, title: "Education", component: <Education/> },
-    { page: 2, title: "About/Skills", component:
+    { page: 0, title: "About/Skills", component:
       <>
         <About/>
         <br/>
         <Skills/>
       </>},
+    { page: 1, title: "Experience", component: <Experience/> },
+    { page: 2, title: "Education", component: <Education/> }
   ];
   useEffect(() => {
 

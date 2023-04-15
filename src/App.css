@@ -26,6 +26,7 @@ ul {
   position: relative;
   margin: 15vh 1vw;
 }
+
 div.nav {
   position: absolute;
   background-color: #202020;
@@ -103,6 +104,14 @@ html {
   width:100%; 
 }
 
+.components {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.components::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 .blinking{
   animation:blinkingText 1.2s infinite;
   text-shadow: none;
@@ -138,7 +147,7 @@ h1 {
   margin: 0;
   top: 20vh;
   width: 80vw;
-  height: 100%;
+  height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1;
@@ -256,10 +265,18 @@ hr {
 
 .skillimg {
   width: 5vw;
-  margin: 5vh 5vw;
+  margin: 5vh 7.5vw;
   display: inline-block;
   -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
   filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
+}
+.skillimg[id="portfolio"] {
+  margin: 4vh 12.5vw;
+}
+
+.skillimg[id="lang"] {
+  width: 2vw;
+  margin: 0vh 2vw;
 }
 
 .skillimg:hover {

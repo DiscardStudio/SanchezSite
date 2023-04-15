@@ -1,6 +1,9 @@
 import { React } from 'react';
 function About(props) {
-
+        const portfolio = [
+                {img:"SanchezPictures/github.png",link:"https://github.com/DiscardStudio"},
+                {img:"SanchezPictures/linkedin.png",link:"https://linkedin.com/in/tech-sanchez"},
+        ];
         return (
                 <>
                         <h1>Michael Sanchez</h1>
@@ -10,6 +13,7 @@ function About(props) {
                                 I am a New Graduate from Stevens Institute of Technology. I fulfill Independent Contracts for small businesses<br/>
                                 alongside working as a Tutor for my Cohort, Stevens Technical Enrichment Program (STEP).
                         </p>
+                        {portfolio.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} id="portfolio" src={img.img} alt={img.link} className="skillimg"/></a>)}
                 </>
         );
 }
@@ -140,18 +144,28 @@ function Education(props) {
 function Skills(props) {
         const frameworks = [
                 {img:"SanchezPictures/qiskit.png",link:"https://qiskit.org/"},
-                {img:"SanchezPictures/github.png",link:"https://nodejs.org/"},
-                {img:"SanchezPictures/nodejs.png",link:"https://react.dev/"},
-                {img:"SanchezPictures/selenium.png",link:"https://github.com/"},
+                {img:"SanchezPictures/nodejs.png",link:"https://nodejs.org/"},
+                {img:"SanchezPictures/react.png",link:"https://react.dev/"},
         ];
         const languages = [
-                
+                {img: "SanchezPictures/c.png", link: "https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html"},
+                {img: "SanchezPictures/cpp.png", link: "https://cplusplus.com/doc/tutorial/"},
+                {img: "SanchezPictures/java.png", link: "https://docs.oracle.com/en/java/"},
+                {img: "SanchezPictures/python.png", link: "https://docs.python.org/3/"},
+                {img: "SanchezPictures/ocaml.png", link: "https://www.ocaml.org/docs"},
+                {img: "SanchezPictures/erl.png", link: "https://www.erlang.org/docs"},
+                {img: "SanchezPictures/psql.png", link: "https://www.postgresql.org/docs/"},
+                {img: "SanchezPictures/html.png", link: "https://developer.mozilla.org/en-US/docs/Web/HTML"},
+                {img: "SanchezPictures/css.png", link: "https://developer.mozilla.org/en-US/docs/Web/CSS"},
+                {img: "SanchezPictures/js.png", link: "https://developer.mozilla.org/en-US/docs/Web/javascript"}
         ];
         return (
                 <>
                         <h1>Skills</h1>
                         <hr/>
                         {frameworks.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} src={img.img} alt={img.link} className="skillimg"/></a>)}
+                        <br/>
+                        {languages.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} src={img.img} alt={img.link} id="lang" className="skillimg"/></a>)}
                 </>
         );
 }
