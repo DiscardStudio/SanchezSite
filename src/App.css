@@ -40,7 +40,6 @@ div.nav {
   border-style: solid;
   z-index: 999;
   width: 19vw;
-  transition: all .5s ease-out;
 }
 
 button.nava:link, button.nava:visited, button.nava {
@@ -287,8 +286,12 @@ hr {
   width: 60vw;
 }
 @media (min-width: 700px) {
+  div.nav {
+    transition: all .5s ease-out;
+  }
+
   div.nav:hover {
-    transform: translateX(15.5vw);
+    left: 0;
   }
 }
 @media (max-width: 700px) {
@@ -329,10 +332,6 @@ hr {
     display: none;
   }
 
-  .nava, .me {
-    display: none;
-  }
-
   div.nav {
     top: -95vh;
     height: 100vh;
@@ -341,6 +340,6 @@ hr {
   }
 
   div.nav:hover {
-    transform: translateY(95vh);
+    top: 0;
   }
 }

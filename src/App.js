@@ -3,31 +3,40 @@ import './App.css';
 import { Display } from './components/componentPicker';
 import { About, Experience, Education, Skills } from './components/components';
 
-function Nav(props) {
-  useEffect(() => {
+function Nav({page, nav, setPage}) {
+  const [tpage, setTPage] = useState(page);
+
+  function hideNav(){
     if(window.innerWidth <= 700) {
-      
+      document.getElementsByClassName("nav")[0].style.top = "-95vh";
     }
-  },[]);
+  }
+
+  useEffect(() => {
+    setPage(tpage);
+  },[tpage]);
 
 
   return (
     <div>
-      <div className="nav">
+      <div className="nav" id="navbar">
         <img alt="Michael Sanchez" src="SanchezPictures/Contemporary.png" className="me"/>
-        <ul className="nav">
+        <ul className="navl">
           {
-            props.nav.map(x=>{
+            nav.map(x=>{
               return (
-              <li className="nav" key={x.page}>
-                <button style={x.page===props.page? {opacity: 1}:{opacity: 0.5}} className={"nava"} onClick={() => props.setPage(x.page)}>{x.title}</button>
+              <li className="navl" key={x.page}>
+                <button style={x.page===page? {opacity: 1}:{opacity: 0.5}} className={"nava"} onClick={() => {
+                  setTPage(x.page);
+                  hideNav();
+                  }}>{x.title}</button>
               </li>)
             })
           }
         </ul>
         <img className="logo" alt="logo"/>
       </div>
-      <Display component={props.page} info={props.nav}/>
+      <Display component={page} info={nav}/>
     </div>
   );
 }
