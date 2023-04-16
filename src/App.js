@@ -4,6 +4,13 @@ import { Display } from './components/componentPicker';
 import { About, Experience, Education, Skills } from './components/components';
 
 function Nav(props) {
+  useEffect(() => {
+    if(window.innerWidth <= 700) {
+      
+    }
+  },[]);
+
+
   return (
     <div>
       <div className="nav">

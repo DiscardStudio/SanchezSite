@@ -32,7 +32,7 @@ div.nav {
   background-color: #202020;
   margin:0;
   top:0px;
-  left:-15.5vw;
+  left:-16vw;
   height: 100%;
   box-shadow: 0px 10px 10px;
   border-width: 1px;
@@ -42,11 +42,6 @@ div.nav {
   width: 19vw;
   transition: all .5s ease-out;
 }
-
-div.nav:hover {
-  transform: translate(15vw, 0);
-}
-
 
 button.nava:link, button.nava:visited, button.nava {
   position: relative;
@@ -195,6 +190,7 @@ div.nav:hover .logo {
 .experience {
   position:relative;
   padding: auto;
+  margin: 1vh 1vw;
 }
 
 .range, .exp {
@@ -283,4 +279,68 @@ hr {
   -webkit-filter:grayscale(25%);
   filter: grayscale(25%);
   cursor: grab;
+}
+
+.skillimgs {
+  margin: 0;
+  overflow-x: clip;
+  width: 60vw;
+}
+@media (min-width: 700px) {
+  div.nav:hover {
+    transform: translateX(15.5vw);
+  }
+}
+@media (max-width: 700px) {
+  .components {
+    top: 0;
+    height: 100vh;
+  }
+
+  h1 {
+    margin: 7.5vh 0 0;
+  }
+
+  html {
+    overflow: hidden;
+  }
+  .skillimg {
+    width: 10vw;
+    margin: 5vh 5vw;
+    display: inline-block;
+    -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
+    filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
+  }
+  .skillimg[id="portfolio"] {
+    margin: 4vh 12.5vw;
+  }
+  
+  .skillimg[id="lang"] {
+    width: 7.5vw;
+    margin: 0vh 2vw;
+  }
+  
+  .skillimg:hover {
+    -webkit-filter:grayscale(25%);
+    filter: grayscale(25%);
+    cursor: grab;
+  }
+  .logo {
+    display: none;
+  }
+
+  .nava, .me {
+    display: none;
+  }
+
+  div.nav {
+    top: -95vh;
+    height: 100vh;
+    width: 102vw;
+    left: 0;
+  }
+
+  div.nav:hover {
+    transform: translateY(95vh);
+  }
 }

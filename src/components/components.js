@@ -11,7 +11,8 @@ function About(props) {
                         <hr/>
                         <p>
                                 I am a New Graduate from Stevens Institute of Technology. I fulfill Independent Contracts for small businesses<br/>
-                                alongside working as a Tutor for my Cohort, Stevens Technical Enrichment Program (STEP).
+                                alongside working as a Tutor for my Cohort, Stevens Technical Enrichment Program (STEP). Check out my experience <br/>
+                                from the navigation bar on the left.
                         </p>
                         {portfolio.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} id="portfolio" src={img.img} alt={img.link} className="skillimg"/></a>)}
                 </>
@@ -127,14 +128,7 @@ function Education(props) {
                                 title="Bachelors of Science in Computer Science"
                                 points={[
                                         "GPA | 3.0",
-                                        "Coursework:",
-                                        "CS 516: Compiler Design and Implementation",
-                                        "CS 517: Quantum Information and Quantum Computing",
-                                        "CS 511: Concurrent Programming, Systems Programming",
-                                        "CS 492: Operating Systems",
-                                        "CS 334: Theory of Computation",
-                                        "CS 442: Database Management Systems",
-                                        "CS 496: Principles of Programming Languages"
+                                        "Coursework: CS 516: Compiler Design and Implementation, CS 517: Quantum Information and Quantum Computing, CS 511: Concurrent Programming, Systems Programming, CS 492: Operating Systems, CS 334: Theory of Computation, CS 442: Database Management Systems, CS 496: Principles of Programming Languages"
                                 ]}
                         />
                 </>
@@ -160,13 +154,13 @@ function Skills(props) {
                 {img: "SanchezPictures/js.png", link: "https://developer.mozilla.org/en-US/docs/Web/javascript"}
         ];
         return (
-                <>
+                <div className="skillimgs">
                         <h1>Skills</h1>
                         <hr/>
                         {frameworks.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} src={img.img} alt={img.link} className="skillimg"/></a>)}
                         <br/>
                         {languages.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} src={img.img} alt={img.link} id="lang" className="skillimg"/></a>)}
-                </>
+                </div>
         );
 }
 
