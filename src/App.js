@@ -5,21 +5,30 @@ import { About, Experience, Education, Skills } from './components/components';
 
 function Nav({page, nav, setPage}) {
   const [tpage, setTPage] = useState(page);
+  const [navbar, toggle] = useState(true);
 
   function hideNav(){
     if(window.innerWidth <= 700) {
       document.getElementsByClassName("nav")[0].style.top = "-95vh";
     }
+    toggle(false);
+  }
+  
+  function showNav(){
+    if(window.innerWidth <= 700 && navbar) {
+      document.getElementsByClassName("nav")[0].style.top = "100vh";
+    }
+    toggle(true);
   }
 
   useEffect(() => {
     setPage(tpage);
-  },[tpage]);
+  },[tpage,setPage]);
 
 
   return (
     <div>
-      <div className="nav" id="navbar">
+      <div className="nav" id="navbar" onMouseEnter={() => showNav()}>
         <img alt="Michael Sanchez" src="SanchezPictures/Contemporary.png" className="me"/>
         <ul className="navl">
           {
