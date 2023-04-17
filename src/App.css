@@ -352,6 +352,7 @@ p {
     left: 50vw;
     content: url("../public/burger.png");
     bottom: 0;
+    height: 5vh;
   }
 
   div.nav {
