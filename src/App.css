@@ -349,7 +349,7 @@ p {
   }
   .logo {
     position: absolute;
-    margin: 0.5vh auto;
+    left: 50vw;
     content: url("../public/burger.png");
     bottom: 0;
   }
