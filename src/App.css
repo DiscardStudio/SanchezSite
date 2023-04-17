@@ -192,25 +192,6 @@ div.nav:hover .logo {
   margin: 1vh 1vw;
 }
 
-.range, .exp {
-  margin: 2vh auto;
-  display: inline-block;
-}
-
-.exp {
-  position: absolute;
-  left: 0;
-}
-
-.range {
-  position: absolute;
-  right: 0vw;
-}
-
-.range[id="school"] {
-  right: 20vw;
-}
-
 .points, .point {
   margin: 0;
   margin-top: 2vh;
@@ -254,7 +235,6 @@ hr {
 
 .title {
   position: relative;
-  top: 5vh;
   margin: 2vh 0;
 }
 
@@ -275,8 +255,8 @@ hr {
 }
 
 .skillimg:hover {
-  -webkit-filter:grayscale(25%);
-  filter: grayscale(25%);
+  -webkit-filter:grayscale(0%);
+  filter: grayscale(0%);
   cursor: grab;
 }
 
@@ -285,6 +265,13 @@ hr {
   overflow-x: clip;
   width: 60vw;
 }
+
+p {
+  width: 60vw;
+  overflow-x: clip;
+  font-size: 1em;
+}
+
 @media (min-width: 700px) {
   div.nav {
     transition: all .5s ease-out;
@@ -292,6 +279,29 @@ hr {
 
   div.nav:hover {
     left: 0;
+  }
+
+  .range {
+    position: absolute;
+    right: 0vw;
+  }
+  
+  .range[id="school"] {
+    right: 20vw;
+  }
+
+  .range, .exp {
+    margin: 2vh auto;
+    display: inline-block;
+  }
+  
+  .exp {
+    position: absolute;
+    left: 0;
+  }
+
+  .title {
+    top: 5vh;
   }
 }
 @media (max-width: 700px) {
@@ -311,6 +321,7 @@ hr {
     width: 10vw;
     margin: 5vh 5vw;
     display: inline-block;
+    overflow-x: clip;
     -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
     filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9)grayscale(100%);
   }
@@ -323,9 +334,9 @@ hr {
     margin: 0vh 2vw;
   }
   
-  .skillimg:hover {
-    -webkit-filter:grayscale(25%);
-    filter: grayscale(25%);
+  .skillimg:hover, .skillimg:active {
+    -webkit-filter:grayscale(0%);
+    filter: grayscale(0%);
     cursor: grab;
   }
   .logo {
@@ -337,5 +348,10 @@ hr {
     height: 100vh;
     width: 102vw;
     left: 0;
+  }
+  
+  .me {
+    width: 60vw;
+    left: 20vw;
   }
 }

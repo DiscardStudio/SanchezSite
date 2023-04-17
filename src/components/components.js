@@ -10,9 +10,7 @@ function About(props) {
                         <h2>Software Engineer</h2>
                         <hr/>
                         <p>
-                                I am a New Graduate from Stevens Institute of Technology. I fulfill Independent Contracts for small businesses<br/>
-                                alongside working as a Tutor for my Cohort, Stevens Technical Enrichment Program (STEP). Check out my experience <br/>
-                                from the navigation bar on the left.
+                                I am a New Graduate from Stevens Institute of Technology. I fulfill Independent Contracts for small businesses alongside working as a Tutor for my Cohort, Stevens Technical Enrichment Program (STEP). Check out my experience from the navigation bar on the left.
                         </p>
                         {portfolio.map(img => <a href={img.link}  target='_blank' rel="noreferrer"><img key={img.link} id="portfolio" src={img.img} alt={img.link} className="skillimg"/></a>)}
                 </>
