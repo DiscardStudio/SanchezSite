@@ -349,10 +349,11 @@ p {
   }
   .logo {
     position: absolute;
+    margin: 1vh 0;
     left: 50vw;
     content: url("../public/burger.png");
     bottom: 0;
-    height: 5vh;
+    height: 2.5vh;
   }
 
   div.nav {
