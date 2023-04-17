@@ -150,11 +150,8 @@ h1 {
 .logo {
   position: absolute;
   width:3vw;
-  right: 0;
-  top: 50vh;
   margin: .5vh .5vw;
   opacity: .5;
-  content: url("../public/backward-arrow.svg");
   transition: all .5s ease-out;
   animation: blinkOut 2s infinite;
 }
@@ -173,11 +170,6 @@ h1 {
   100%{opacity: 0;}
 }
 
-div.nav:hover .logo {
-  content: url("../public/forward-arrow.svg");
-  opacity: 1;
-  animation: blinkIn 2s;
-}
 
 .me {
   position: relative;
@@ -307,6 +299,18 @@ p {
   .title {
     top: 5vh;
   }
+
+  .logo {
+    content: url("../public/backward-arrow.svg");
+    right: 0;
+    top: 50vh;
+  }
+
+  div.nav:hover .logo {
+    content: url("../public/forward-arrow.svg");
+    opacity: 1;
+    animation: blinkIn 2s;
+  }
 }
 @media (max-width: 700px) {
   .components {
@@ -344,7 +348,10 @@ p {
     cursor: grab;
   }
   .logo {
-    display: none;
+    position: absolute;
+    margin: 0.5vh auto;
+    content: url("../public/burger.png");
+    bottom: 0;
   }
 
   div.nav {
