@@ -189,7 +189,7 @@ div.nav:hover .logo {
 .experience {
   position:relative;
   padding: auto;
-  margin: 1vh 1vw;
+  margin: 2vh 2vw;
 }
 
 .points, .point {
@@ -277,6 +277,10 @@ p {
     transition: all .5s ease-out;
   }
 
+  h2[id="title"] {
+    margin: 1vh 1vw;
+  }
+
   div.nav:hover {
     left: 0;
   }
@@ -349,7 +353,7 @@ p {
     width: 102vw;
     left: 0;
   }
-  
+
   .me {
     width: 60vw;
     left: 20vw;

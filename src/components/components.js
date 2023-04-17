@@ -103,10 +103,10 @@ function Experience(props) {
                         <hr/>
                         <br/>
                         <div className="exper">
-                                <h2>Titles</h2>
+                                <div className="top"><h2 id="title">Titles</h2></div>
                                 <WorkExperience/>
                                 <br/>
-                                <h2>Projects</h2>
+                                <div className="top"><h2 id="title">Projects</h2></div>
                                 <ProjectExperience/>
                         </div>
                 </>
