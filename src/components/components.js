@@ -126,7 +126,13 @@ function Education(props) {
                                 title="Bachelors of Science in Computer Science"
                                 points={[
                                         "GPA | 3.0",
-                                        "Coursework: CS 516: Compiler Design and Implementation, CS 517: Quantum Information and Quantum Computing, CS 511: Concurrent Programming, Systems Programming, CS 492: Operating Systems, CS 334: Theory of Computation, CS 442: Database Management Systems, CS 496: Principles of Programming Languages"
+                                        "Coursework:",
+                                        "CS 516: Compiler Design and Implementation", 
+                                        "CS 517: Quantum Information and Quantum Computing",
+                                        "CS 511: Concurrent Programming, Systems Programming",
+                                        "CS 492: Operating Systems, CS 334: Theory of Computation",
+                                        "CS 442: Database Management Systems", 
+                                        "CS 496: Principles of Programming Languages"
                                 ]}
                         />
                 </>
