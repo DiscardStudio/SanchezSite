@@ -32,14 +32,14 @@ div.nav {
   background-color: #202020;
   margin:0;
   top:0px;
-  left:-16vw;
+  left:-18vw;
   height: 100%;
   box-shadow: 0px 10px 10px;
   border-width: 1px;
   border-color: #242424;
   border-style: solid;
   z-index: 999;
-  width: 19vw;
+  width: 21vw;
 }
 
 button.nava:link, button.nava:visited, button.nava {
@@ -153,7 +153,6 @@ h1 {
   margin: .5vh .5vw;
   opacity: .5;
   transition: all .5s ease-out;
-  animation: blinkOut 2s infinite;
 }
 
 @keyframes blinkIn{
@@ -304,6 +303,7 @@ p {
     content: url("../public/backward-arrow.svg");
     right: 0;
     top: 50vh;
+    animation: blinkOut 2s infinite;
   }
 
   div.nav:hover .logo {
@@ -349,11 +349,11 @@ p {
   }
   .logo {
     position: absolute;
-    margin: 1vh 0;
-    left: 50vw;
+    margin: 1.5vh 1.5vw;
     content: url("../public/burger.png");
     bottom: 0;
-    height: 2.5vh;
+    height: 2vh;
+    width: 5vw;
   }
 
   div.nav {
@@ -361,6 +361,7 @@ p {
     height: 100vh;
     width: 102vw;
     left: 0;
+    overflow: hidden;
   }
 
   .me {
