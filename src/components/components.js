@@ -27,7 +27,7 @@ function ExperiencePoint(props) {
                         <h4 className="title">{props.title}</h4>
                         <ul className="points" id={props.id === "school"?"school":""}>
                                 {props.points.map(point => (
-                                        <li key={[point]} className="point" id={props.id === "school"?"school":""}>{point}</li>
+                                        <li key={point} className="point" id={props.id === "school"?"school":""}>{point}</li>
                                 ))}
                         </ul>
                 </div>
